@@ -1,0 +1,15 @@
+OASISFormat: 0.4
+Name: arbitrary-cstructs
+Version: 0.0.1
+Synopsis: arbitrary constructors use with randomized testing and mirage
+Authors: Mindy Preston (meetup@yomimono.org)
+License: ISC
+Plugins: META (0.4), DevFiles (0.4)
+BuildTools: ocamlbuild
+
+Description: provide generators for random, but structured, data
+
+Library arbitrary_cstructs
+  Path: lib
+  Modules: Arbitrary
+  BuildDepends: ipaddr, tcpip, cstruct, quickcheck
