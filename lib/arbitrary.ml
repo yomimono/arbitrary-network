@@ -49,8 +49,7 @@ let arbitrary_arp =
   let arpify str = 
     let arp = Cstruct.create sizeof_arpv4 in
     Cstruct.blit_from_string str 0 arp 0 sizeof_arpv4;
-    Wire_structs.set_ethernet_ethertype arp 0x0806; (* overwrite random bytes with 
-                                                       arp ethertype *)
+    Wire_structs.set_ethernet_ethertype arp 0x0806; 
   in
   arbitrary_bytesequenceN sizeof_arpv4 >>= fun r -> ret_gen (arpify r)
 
