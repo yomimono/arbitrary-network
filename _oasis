@@ -1,5 +1,5 @@
 OASISFormat: 0.4
-Name: arbitrary-cstructs
+Name: arbitrary-network
 Version: 0.0.1
 Synopsis: arbitrary constructors use with randomized testing and mirage
 Authors: Mindy Preston (meetup@yomimono.org)
@@ -9,7 +9,7 @@ BuildTools: ocamlbuild
 
 Description: provide generators for random, but structured, data
 
-Library arbitrary_cstructs
+Library arbitrary_network
   Path: lib
   Modules: Arbitrary
   BuildDepends: ipaddr, tcpip, cstruct, quickcheck
