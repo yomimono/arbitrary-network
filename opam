@@ -1,0 +1,23 @@
+opam-version: "1.2"
+name: "arbitrary-network"
+version: "0.1"
+maintainer: "Mindy Preston <meetup@yomimono.org>"
+authors: "Mindy Preston <meetup@yomimono.org>"
+homepage: "https://github.com/yomimono/arbitrary-network"
+bug-reports: "https://github.com/yomimono/arbitrary-network/issues"
+dev-repo: "https://github.com/yomimono/arbitrary-network.git"
+license: "ISC"
+
+build: [
+  ["./configure" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [make "install"]
+remove:  ["ocamlfind" "remove" "arbitrary-network"]
+depends: [
+  "ocamlfind" {build}
+  "quickcheck"
+  "ipaddr"
+  "tcpip"
+  "cstruct"
+]
