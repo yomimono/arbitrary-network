@@ -9,7 +9,7 @@ BuildTools: ocamlbuild
 
 Description: provide generators for random, but structured, data
 
-Library arbitrary_network
+Library "arbitrary-network"
   Path: lib
   Modules: Arbitrary
   BuildDepends: ipaddr, tcpip, cstruct, quickcheck
