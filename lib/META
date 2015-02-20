@@ -1,0 +1,12 @@
+# OASIS_START
+# DO NOT EDIT (digest: e931423f4be9d90ee57b3cf1563d55e2)
+version = "0.0.1"
+description = "arbitrary constructors use with randomized testing and mirage"
+requires = "ipaddr tcpip cstruct quickcheck"
+archive(byte) = "arbitrary-network.cma"
+archive(byte, plugin) = "arbitrary-network.cma"
+archive(native) = "arbitrary-network.cmxa"
+archive(native, plugin) = "arbitrary-network.cmxs"
+exists_if = "arbitrary-network.cma"
+# OASIS_STOP
+

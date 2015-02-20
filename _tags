@@ -1,0 +1,23 @@
+# OASIS_START
+# DO NOT EDIT (digest: 41c36b9287cca89ca3f6fab618b272d7)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+true: annot, bin_annot
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Library arbitrary-network
+"lib/arbitrary-network.cmxs": use_arbitrary-network
+<lib/*.ml{,i,y}>: pkg_cstruct
+<lib/*.ml{,i,y}>: pkg_ipaddr
+<lib/*.ml{,i,y}>: pkg_quickcheck
+<lib/*.ml{,i,y}>: pkg_tcpip
+# OASIS_STOP
