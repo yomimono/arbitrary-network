@@ -19,19 +19,11 @@ let arbitrary_ip =
 let arbitrary_tcp_or_udp = 
   arbitrary_bool >>= fun p -> ret_gen (if p then 6 else 17)
 
-let arbitrary_table_entry =
-  let arbitrary_ip_port = arbitrary_pair arbitrary_ip arbitrary_port in
-  arbitrary_tcp_or_udp >>= fun v1 -> 
-  arbitrary_ip_port >>= fun v2 ->
-  arbitrary_ip_port >>= fun v3 ->
-  arbitrary_ip_port >>= fun v4 ->
-  ret_gen (v1, v2, v3, v4)
+let arbitrary_uint16 =
+  arbitrary_int >>= fun i -> ret_gen (abs (i mod 65536))
 
 let arbitrary_mac = 
   arbitrary_bytesequenceN 6 >>= fun b -> ret_gen (Macaddr.of_bytes_exn b)
-
-let arbitrary_uint16 =
-  arbitrary_int >>= fun i -> ret_gen (abs (i mod 65536))
 
 let arbitrary_ethernet_header =
   let build_ethernet_header (src, dst, ethertype) =
