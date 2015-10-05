@@ -4,14 +4,21 @@ open QuickCheck_gen
 let arbitrary_port = 
   arbitrary_int >>= fun p -> ret_gen (abs (p mod 65536))
 
+let arbitrary_ipv6 =
+  arbitrary_bytesequenceN 16 >>= fun bytes ->
+  ret_gen (Ipaddr.V6.of_bytes_exn bytes)
+
+let arbitrary_ipv4 =
+  arbitrary_bytesequenceN 4 >>= fun bytes ->
+  ret_gen (Ipaddr.V4.of_bytes_exn bytes)
+
 let arbitrary_ip = 
-  let byte_switch is_ipv6 bytes =
+  let byte_switch is_ipv6 =
     match is_ipv6 with
-    | true -> Ipaddr.V6 (Ipaddr.V6.of_bytes_exn bytes) (* Ipaddr.V6.t = 4x int32 *)
-    | false -> Ipaddr.V4 (Ipaddr.V4.of_bytes_raw bytes 12) (* Ipaddr.V4.t = int32 *)
+    | true -> arbitrary_ipv6 >>= fun ip -> ret_gen (Ipaddr.V6 ip)
+    | false -> arbitrary_ipv4 >>= fun ip -> ret_gen (Ipaddr.V4 ip)
   in
-  arbitrary_pair arbitrary_bool (arbitrary_bytesequenceN 16) >>=
-  fun (b, i) -> ret_gen (byte_switch b i)
+  arbitrary_bool >>= byte_switch
 
 (* protocol really should probably be arbitrary_int, but instead
  * we'll choose randomly between 6 (tcp) and 17 (udp).  (next header in ipv6
