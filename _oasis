@@ -1,6 +1,6 @@
 OASISFormat: 0.4
 Name: arbitrary-network
-Version: 0.0.1
+Version: 0.2
 Synopsis: arbitrary constructors use with randomized testing and mirage
 Authors: Mindy Preston (meetup@yomimono.org)
 License: ISC
