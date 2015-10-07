@@ -32,6 +32,9 @@ let arbitrary_uint16 =
 let arbitrary_mac = 
   arbitrary_bytesequenceN 6 >>= fun b -> ret_gen (Macaddr.of_bytes_exn b)
 
+let arbitrary_cstruct n =
+  arbitrary_bytesequenceN n >>= fun bytes -> ret_gen (Cstruct.of_string bytes)
+
 let arbitrary_ethernet_header =
   let build_ethernet_header (src, dst, ethertype) =
     let c = Cstruct.create (Wire_structs.sizeof_ethernet) in

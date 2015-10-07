@@ -6,6 +6,7 @@ val arbitrary_ip : Ipaddr.t gen
 val arbitrary_port : int gen
 val arbitrary_tcp_or_udp : int gen
 val arbitrary_mac : Macaddr.t gen
+val arbitrary_cstruct : int -> Cstruct.t gen
 
 val qc_printer : QuickCheck.testresult -> string
 
